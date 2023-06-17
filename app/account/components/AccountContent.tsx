@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { useUser } from "@/hooks/useUser";
 import Button from "@/components/Button";
+import Input from "@/components/Input";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
 import { postData } from "@/libs/helpers";
 
@@ -36,6 +37,17 @@ const AccountContent = () => {
 
   return ( 
     <div className="mb-7 px-6">
+      {user && (
+        <div className="mb-4 flex flex-col gap-y-4">
+          <h2 className="text-xl font-semibold">Account Details</h2>
+          <label htmlFor="email">Email</label>
+          <Input 
+            placeholder="Email"
+            value={user.email}
+            disabled={true}
+          />
+        </div>
+      )}
       {!subscription && (
         <div className="flex flex-col gap-y-4">
         <p>No active plan.</p>
